@@ -79,3 +79,16 @@
     </v-col>
   </v-row>
 </template>
+<script>
+export default {
+  computed: {
+    articles() {
+      return this.$store.getters['article/articles']
+    },
+  },
+
+  created() {
+    this.$store.dispatch('article/fetchArticles')
+  },
+}
+</script>
