@@ -6,16 +6,16 @@
       </nuxt-link>
       <v-spacer></v-spacer>
       <template v-if="isSignedIn">
-        <nuxt-link to="/writing-article">
+        <nuxt-link to="/writing_article">
           <v-btn text :class="$style.register">投稿する</v-btn>
         </nuxt-link>
         <v-btn text :class="$style.login" @click="signOut">ログアウト</v-btn>
       </template>
       <template v-else>
-        <nuxt-link to="/sign-up">
+        <nuxt-link to="/sign_up">
           <v-btn text :class="$style.register">ユーザー登録</v-btn>
         </nuxt-link>
-        <nuxt-link to="/sign-in">
+        <nuxt-link to="/sign_in">
           <v-btn text :class="$style.login">ログイン</v-btn>
         </nuxt-link>
       </template>
@@ -39,7 +39,7 @@ export default {
   methods: {
     async signOut() {
       await this.$store.dispatch('user/signOut').then(() => {
-        this.$router.push('/sign-in')
+        this.$router.push('/sign_in')
       })
     },
   },
