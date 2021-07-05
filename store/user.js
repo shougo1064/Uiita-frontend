@@ -16,6 +16,10 @@ export const mutations = {
   setSignInState(state, signInState) {
     state.isSignedIn = signInState
   },
+
+  resetHeaders(state) {
+    state.headers = {}
+  },
 }
 
 export const actions = {
@@ -49,5 +53,10 @@ export const actions = {
       commit('setHeaders', loginInfoHeaders)
       commit('setSignInState', true)
     })
+  },
+
+  signOut({ commit }) {
+    commit('resetHeaders')
+    commit('setSignInState', false)
   },
 }
