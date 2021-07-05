@@ -6,12 +6,18 @@
       </nuxt-link>
       <v-spacer></v-spacer>
       <template v-if="isSignedIn">
-        <v-btn text :class="$style.register">投稿する</v-btn>
+        <nuxt-link to="/">
+          <v-btn text :class="$style.register">投稿する</v-btn>
+        </nuxt-link>
         <v-btn text :class="$style.login" @click="signOut">ログアウト</v-btn>
       </template>
       <template v-else>
-        <v-btn text :class="$style.register">ユーザー登録</v-btn>
-        <v-btn text :class="$style.login">ログイン</v-btn>
+        <nuxt-link to="/sign_up">
+          <v-btn text :class="$style.register">ユーザー登録</v-btn>
+        </nuxt-link>
+        <nuxt-link to="/sign_in">
+          <v-btn text :class="$style.login">ログイン</v-btn>
+        </nuxt-link>
       </template>
     </v-app-bar>
     <v-main>
