@@ -24,8 +24,11 @@ export default {
   css: ['@fortawesome/fontawesome-free/css/all.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/timeago.js', '~/plugins/cookie-storage.js'],
-
+  plugins: [
+    '~/plugins/timeago.js',
+    '~/plugins/cookie-storage.js',
+    '~/plugins/axios.js',
+  ],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
