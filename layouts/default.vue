@@ -23,6 +23,7 @@
 .app_title {
   color: #fff;
   font-weight: bold;
+  font-size: 24px;
 }
 .register {
   border: 2px solid #fff;
