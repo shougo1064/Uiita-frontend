@@ -9,6 +9,11 @@
             </v-list-item-title>
             <v-list-item-subtitle :class="$style.user_name">
               by {{ article.user.name }}
+              <timeago
+                :class="$style.time_ago"
+                :datetime="article.updated_at"
+                :auto-update="60"
+              />
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
@@ -55,5 +60,10 @@ export default {
 }
 .user_name {
   font-size: 16px;
+  display: flex;
+}
+
+.time_ago {
+  margin-left: 10px;
 }
 </style>
