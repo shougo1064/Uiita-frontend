@@ -1,81 +1,74 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation </a
-            >.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br />
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+  <v-container :class="$style.container">
+    <v-card tile flat :class="$style.card">
+      <div v-for="article in articles" :key="article.id">
+        <v-list-item two-line>
+          <v-list-item-avatar size="50px" color="#3085DE">
+            <v-icon large color="#fff">fas fa-user</v-icon>
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title :class="$style.article_title">
+              <nuxt-link to="/">{{ article.title }}</nuxt-link>
+            </v-list-item-title>
+            <v-list-item-subtitle :class="$style.user_name">
+              by {{ article.user.name }}
+              <timeago
+                :class="$style.time_ago"
+                :datetime="article.updated_at"
+                :auto-update="60"
+              />
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider class="mx-4"></v-divider>
+      </div>
+    </v-card>
+  </v-container>
 </template>
+
+<script>
+export default {
+  computed: {
+    articles() {
+      return this.$store.getters['article/articles']
+    },
+  },
+
+  created() {
+    this.$store.dispatch('article/fetchArticles')
+  },
+}
+</script>
+
+<style lang="scss" module>
+.container {
+  margin-top: 20px;
+}
+.card {
+  margin: 0 auto;
+  padding: 28px 20px;
+  width: 800px;
+}
+.article_title {
+  a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #777;
+  }
+}
+.user_name {
+  font-size: 16px;
+  display: flex;
+}
+
+.time_ago {
+  margin-left: 10px;
+}
+</style>
