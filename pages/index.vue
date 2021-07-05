@@ -3,6 +3,9 @@
     <v-card tile flat :class="$style.card">
       <div v-for="article in articles" :key="article.id">
         <v-list-item two-line>
+          <v-list-item-avatar size="50px" color="#3085DE">
+            <v-icon large color="#fff">fas fa-user</v-icon>
+          </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title :class="$style.article_title">
               <nuxt-link to="/">{{ article.title }}</nuxt-link>
