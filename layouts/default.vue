@@ -5,8 +5,14 @@
         <v-toolbar-title :class="$style.app_title">Uiita </v-toolbar-title>
       </nuxt-link>
       <v-spacer></v-spacer>
-      <v-btn text :class="$style.register">ユーザー登録</v-btn>
-      <v-btn text :class="$style.login">ログイン</v-btn>
+      <template v-if="isSignedIn">
+        <v-btn text :class="$style.register">投稿する</v-btn>
+        <v-btn text :class="$style.login">ログアウト</v-btn>
+      </template>
+      <template v-else>
+        <v-btn text :class="$style.register">ユーザー登録</v-btn>
+        <v-btn text :class="$style.login">ログイン</v-btn>
+      </template>
     </v-app-bar>
     <v-main>
       <v-container fluid :class="$style.container">
@@ -15,6 +21,16 @@
     </v-main>
   </v-app>
 </template>
+
+<script>
+export default {
+  computed: {
+    isSignedIn() {
+      return this.$store.getters['user/isSignedIn']
+    },
+  },
+}
+</script>
 
 <style lang="scss" module>
 .header_link {
