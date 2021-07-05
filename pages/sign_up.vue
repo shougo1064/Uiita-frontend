@@ -50,7 +50,7 @@
 
 <script>
 export default {
-  middleware: ['before_auth'],
+  middleware: ['beforeAuth'],
   data() {
     return {
       name: '',
