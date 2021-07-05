@@ -25,6 +25,7 @@
     </v-card>
   </v-container>
 </template>
+
 <script>
 export default {
   computed: {
@@ -38,6 +39,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" module>
 .container {
   margin-top: 20px;
