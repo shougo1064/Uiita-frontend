@@ -6,7 +6,7 @@
       </nuxt-link>
       <v-spacer></v-spacer>
       <template v-if="isSignedIn">
-        <nuxt-link to="/">
+        <nuxt-link to="/writing_article">
           <v-btn text :class="$style.register">投稿する</v-btn>
         </nuxt-link>
         <v-btn text :class="$style.login" @click="signOut">ログアウト</v-btn>
