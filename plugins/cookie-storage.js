@@ -1,4 +1,5 @@
 import * as Cookies from 'js-cookie'
+import createPersistedState from 'vuex-persistedstate'
 const COOKIE_TARGET_STORE = ['user']
 
 function filterValues(serializedJsonValue) {
@@ -19,7 +20,7 @@ function filterValues(serializedJsonValue) {
 
 export default ({ store, isDev }) => {
   createPersistedState({
-    key: 'wonderful-editor-frontend',
+    key: 'Uiita-frontend',
     storage: {
       getItem: (key) => Cookies.get(key),
       setItem: (key, value) =>
