@@ -1,21 +1,23 @@
 <template>
   <v-container class="elevation-3" :class="$style.article_container">
-    <div :class="$style.article_layout">
-      <div :class="$style.name_area">
-        <span :class="$style.user_name">@{{ userName }}</span>
-        <timeago
-          :class="$style.time_ago"
-          :datetime="article.updated_at"
-          :auto-update="60"
-        />
-      </div>
-      <h1 :class="$style.article_title">{{ article.title }}</h1>
-      <div :class="$style.article_body_container">
-        <div :class="$style.article_body">
-          <p>{{ article.body }}</p>
+    <template v-if="isInitialized">
+      <div :class="$style.article_layout">
+        <div :class="$style.name_area">
+          <span :class="$style.user_name">@{{ article.user.name }}</span>
+          <timeago
+            :class="$style.time_ago"
+            :datetime="article.updated_at"
+            :auto-update="60"
+          />
+        </div>
+        <h1 :class="$style.article_title">{{ article.title }}</h1>
+        <div :class="$style.article_body_container">
+          <div :class="$style.article_body">
+            <p>{{ article.body }}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </v-container>
 </template>
 
@@ -23,18 +25,23 @@
 export default {
   middleware: ['authed'],
 
+  data() {
+    return {
+      isInitialized: false,
+    }
+  },
+
   computed: {
     article() {
       return this.$store.getters['article/article']
-    },
-    userName() {
-      return this.$store.getters['article/userName']
     },
   },
 
   async created() {
     const articleId = this.$route.params.id
-    await this.$store.dispatch('article/fetchArticle', articleId)
+    await this.$store.dispatch('article/fetchArticle', articleId).then(() => {
+      this.isInitialized = true
+    })
   },
 }
 </script>
