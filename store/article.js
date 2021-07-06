@@ -1,14 +1,20 @@
 export const state = () => ({
   articles: [],
+  article: {},
 })
 
 export const getters = {
   articles: (state) => state.articles,
+  article: (state) => state.article,
+  userName: (state) => state.article?.user?.name,
 }
 
 export const mutations = {
   setArticles(state, articles) {
     state.articles = articles
+  },
+  setArticle(state, article) {
+    state.article = article
   },
 }
 
@@ -21,6 +27,13 @@ export const actions = {
     })
   },
 
+  async fetchArticle({ commit }, id) {
+    await this.$axios.get(`api/v1/articles/${id}`).then((response) => {
+      const data = response.data
+
+      commit('setArticle', data)
+    })
+  },
   async createArticle(_, params) {
     await this.$axios.post('api/v1/articles', params)
   },

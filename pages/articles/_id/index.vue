@@ -2,7 +2,12 @@
   <v-container class="elevation-3" :class="$style.article_container">
     <div :class="$style.article_layout">
       <div :class="$style.name_area">
-        <span>@{{ article.user.name }}</span>
+        <span :class="$style.user_name">@{{ userName }}</span>
+        <timeago
+          :class="$style.time_ago"
+          :datetime="article.updated_at"
+          :auto-update="60"
+        />
       </div>
       <h1 :class="$style.article_title">{{ article.title }}</h1>
       <div :class="$style.article_body_container">
@@ -18,14 +23,18 @@
 export default {
   middleware: ['authed'],
 
-  data() {
-    return {
-      article: {
-        title: 'title',
-        body: '本文です',
-        user: { name: 'test' },
-      },
-    }
+  computed: {
+    article() {
+      return this.$store.getters['article/article']
+    },
+    userName() {
+      return this.$store.getters['article/userName']
+    },
+  },
+
+  async created() {
+    const articleId = this.$route.params.id
+    await this.$store.dispatch('article/fetchArticle', articleId)
   },
 }
 </script>
@@ -35,12 +44,16 @@ export default {
   margin-top: 30px;
   background: #fff;
   margin-bottom: 20px;
+  width: 60px;
 }
 .article_layout {
   margin: 0 20px;
 }
 .name_area {
   margin-bottom: 16px;
+}
+.user_name {
+  margin-right: 16px;
 }
 .article_title {
   font-size: 40px;
@@ -52,5 +65,6 @@ export default {
 }
 .article_body {
   width: 100%;
+  white-space: pre-wrap;
 }
 </style>
