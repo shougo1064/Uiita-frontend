@@ -36,4 +36,8 @@ export const actions = {
   async createArticle(_, params) {
     await this.$axios.post('api/v1/articles', params)
   },
+
+  async deleteArticle(_, id) {
+    await this.$axios.delete(`api/v1/articles/${id}`)
+  },
 }

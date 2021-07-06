@@ -45,6 +45,23 @@ export default {
       this.isInitialized = true
     })
   },
+
+  methods: {
+    async deleteArticle() {
+      const result = confirm('この記事を削除してもよろしいですか？')
+      if (result) {
+        await this.$store
+          .dispatch('article/deleteArticle', this.article.id)
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch((e) => {
+            // 暫定的な Error 表示
+            alert(e.response.statusText)
+          })
+      }
+    },
+  },
 }
 </script>
 
