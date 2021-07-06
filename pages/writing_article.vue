@@ -53,18 +53,15 @@ export default {
         status: 'published',
       }
 
-      await this.$store
-        .dispatch('article/createArticle', params)
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((e) => {
-          // 暫定的な Error 表示
-          alert(e.response.data.errors.full_messages)
-        })
-        .finally(() => {
-          this.loading = false
-        })
+      try {
+        await this.$store.dispatch('article/createArticle', params)
+        this.$router.push('/')
+      } catch (err) {
+        // 暫定的な Error 表示
+        alert(err.response.data.errors.full_messages)
+      } finally {
+        this.loading = false
+      }
     },
   },
 }

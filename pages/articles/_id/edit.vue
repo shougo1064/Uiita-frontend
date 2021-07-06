@@ -54,19 +54,17 @@ export default {
   methods: {
     async fetchArticle() {
       const articleId = this.$route.params.id
-      await this.$store
-        .dispatch('article/fetchArticle', articleId)
-        .then(() => {
-          const article = this.$store.getters['article/article']
+      try {
+        await this.$store.dispatch('article/fetchArticle', articleId)
 
-          this.article.id = article.id
-          this.article.title = article.title
-          this.article.body = article.body
-        })
-        .catch((e) => {
-          // 暫定的な Error 表示
-          alert(e.response.data.errors.full_messages)
-        })
+        const article = this.$store.getters['article/article']
+        this.article.id = article.id
+        this.article.title = article.title
+        this.article.body = article.body
+      } catch (err) {
+        // 暫定的な Error 表示
+        alert(err.response.data.errors.full_messages)
+      }
     },
 
     async updateArticle(id) {
@@ -75,21 +73,17 @@ export default {
       const params = {
         title: this.article.title,
         body: this.article.body,
-        status: 'published',
       }
 
-      await this.$store
-        .dispatch('article/updateArticle', { id, params })
-        .then(() => {
-          this.$router.push(`/articles/${id}`)
-        })
-        .catch((e) => {
-          // 暫定的な Error 表示
-          alert(e.response.statusText)
-        })
-        .finally(() => {
-          this.loading = false
-        })
+      try {
+        await this.$store.dispatch('article/updateArticle', { id, params })
+        this.$router.push(`/articles/${id}`)
+      } catch (err) {
+        // 暫定的な Error 表示
+        alert(err.response.statusText)
+      } finally {
+        this.loading = false
+      }
     },
   },
 }

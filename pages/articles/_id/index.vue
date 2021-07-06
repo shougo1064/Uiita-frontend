@@ -60,9 +60,13 @@ export default {
   },
   async created() {
     const articleId = this.$route.params.id
-    await this.$store.dispatch('article/fetchArticle', articleId).then(() => {
+    try {
+      await this.$store.dispatch('article/fetchArticle', articleId)
       this.isInitialized = true
-    })
+    } catch (err) {
+      // 暫定的な Error 表示
+      alert(err.response.statusText)
+    }
   },
 
   methods: {
@@ -72,15 +76,13 @@ export default {
     async deleteArticle() {
       const result = confirm('この記事を削除してもよろしいですか？')
       if (result) {
-        await this.$store
-          .dispatch('article/deleteArticle', this.article.id)
-          .then(() => {
-            this.$router.push('/')
-          })
-          .catch((e) => {
-            // 暫定的な Error 表示
-            alert(e.response.statusText)
-          })
+        try {
+          await this.$store.dispatch('article/deleteArticle', this.article.id)
+          this.$router.push('/')
+        } catch (err) {
+          // 暫定的な Error 表示
+          alert(err.response.statusText)
+        }
       }
     },
   },
