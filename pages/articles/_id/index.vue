@@ -43,21 +43,19 @@ export default {
       isInitialized: false,
     }
   },
-
   computed: {
     article() {
       return this.$store.getters['article/article']
     },
+    // 暫定でログインユーザーと記事を書いたユーザーが比較できる要素として設定
+    // 本来は user の id などをエンコードしておいて比較する方が良さそう
+    isShowBtn() {
+      const currentUserEmail = this.$store.getters['user/headers'].uid
+      const result = currentUserEmail === this.article?.user?.email
+      return result
+    },
   },
 
-  // 暫定でログインユーザーと記事を書いたユーザーが比較できる要素として設定
-  // 本来は user の id などをエンコードしておいて比較する方が良さそう
-  isShowBtn() {
-    const currentUserEmail = this.$store.getters['user/headers'].uid
-    const result = currentUserEmail === this.article?.user?.email
-
-    return result
-  },
   async created() {
     const articleId = this.$route.params.id
     try {
@@ -73,8 +71,10 @@ export default {
     moveToEditArticlePage(id) {
       this.$router.push(`/articles/${id}/edit`)
     },
+
     async deleteArticle() {
       const result = confirm('この記事を削除してもよろしいですか？')
+
       if (result) {
         try {
           await this.$store.dispatch('article/deleteArticle', this.article.id)
