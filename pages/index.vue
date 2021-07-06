@@ -8,7 +8,10 @@
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title :class="$style.article_title">
-              <nuxt-link to="/">{{ article.title }}</nuxt-link>
+              <nuxt-link
+                :to="{ name: 'articles-id', params: { id: article.id } }"
+                >{{ article.title }}</nuxt-link
+              >
             </v-list-item-title>
             <v-list-item-subtitle :class="$style.user_name">
               by {{ article.user.name }}
