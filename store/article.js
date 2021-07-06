@@ -40,4 +40,8 @@ export const actions = {
   async deleteArticle(_, id) {
     await this.$axios.delete(`api/v1/articles/${id}`)
   },
+
+  async updateArticle(_, { id, params }) {
+    await this.$axios.patch(`api/v1/articles/${id}`, params)
+  },
 }
