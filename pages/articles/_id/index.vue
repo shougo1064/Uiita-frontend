@@ -2,14 +2,18 @@
   <v-container class="elevation-3" :class="$style.article_container">
     <template v-if="isInitialized">
       <div :class="$style.article_layout">
-        <div :class="$style.name_area">
+        <v-layout :class="$style.name_area">
           <span :class="$style.user_name">@{{ article.user.name }}</span>
           <timeago
             :class="$style.time_ago"
             :datetime="article.updated_at"
             :auto-update="60"
           />
-        </div>
+          <v-spacer></v-spacer>
+          <v-btn text fab small>
+            <v-icon color="#3085DE">fas fa-trash-alt</v-icon>
+          </v-btn>
+        </v-layout>
         <h1 :class="$style.article_title">{{ article.title }}</h1>
         <div :class="$style.article_body_container">
           <div :class="$style.article_body">
@@ -57,7 +61,7 @@ export default {
   margin: 0 20px;
 }
 .name_area {
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 .user_name {
   margin-right: 16px;
