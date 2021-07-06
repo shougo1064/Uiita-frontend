@@ -37,10 +37,9 @@ export default {
   },
 
   methods: {
-    async signOut() {
-      await this.$store.dispatch('user/signOut').then(() => {
-        this.$router.push('/sign_in')
-      })
+    signOut() {
+      this.$store.dispatch('user/signOut')
+      this.$router.push('/sign_in')
     },
   },
 }
