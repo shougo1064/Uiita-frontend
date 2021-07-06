@@ -2,14 +2,20 @@
   <v-container class="elevation-3" :class="$style.article_container">
     <template v-if="isInitialized">
       <div :class="$style.article_layout">
-        <div :class="$style.name_area">
+        <v-layout :class="$style.name_area">
           <span :class="$style.user_name">@{{ article.user.name }}</span>
           <timeago
             :class="$style.time_ago"
             :datetime="article.updated_at"
             :auto-update="60"
           />
-        </div>
+          <v-spacer></v-spacer>
+          <template v-if="isShowBtn">
+            <v-btn text fab small @click="deleteArticle">
+              <v-icon color="#3085DE">fas fa-trash-alt</v-icon>
+            </v-btn>
+          </template>
+        </v-layout>
         <h1 :class="$style.article_title">{{ article.title }}</h1>
         <div :class="$style.article_body_container">
           <div :class="$style.article_body">
@@ -23,8 +29,6 @@
 
 <script>
 export default {
-  middleware: ['authed'],
-
   data() {
     return {
       isInitialized: false,
@@ -37,11 +41,36 @@ export default {
     },
   },
 
+  // 暫定でログインユーザーと記事を書いたユーザーが比較できる要素として設定
+  // 本来は user の id などをエンコードしておいて比較する方が良さそう
+  isShowBtn() {
+    const currentUserEmail = this.$store.getters['user/headers'].uid
+    const result = currentUserEmail === this.article?.user?.email
+
+    return result
+  },
   async created() {
     const articleId = this.$route.params.id
     await this.$store.dispatch('article/fetchArticle', articleId).then(() => {
       this.isInitialized = true
     })
+  },
+
+  methods: {
+    async deleteArticle() {
+      const result = confirm('この記事を削除してもよろしいですか？')
+      if (result) {
+        await this.$store
+          .dispatch('article/deleteArticle', this.article.id)
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch((e) => {
+            // 暫定的な Error 表示
+            alert(e.response.statusText)
+          })
+      }
+    },
   },
 }
 </script>
@@ -57,7 +86,7 @@ export default {
   margin: 0 20px;
 }
 .name_area {
-  margin-bottom: 16px;
+  margin: 16px 0;
 }
 .user_name {
   margin-right: 16px;
