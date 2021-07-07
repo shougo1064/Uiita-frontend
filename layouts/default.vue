@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app dark color="#3085DE">
       <nuxt-link to="/" :class="$style.header_link">
-        <v-toolbar-title :class="$style.app_title">Uiita </v-toolbar-title>
+        <v-toolbar-title :class="$style.app_title">Uiita</v-toolbar-title>
       </nuxt-link>
       <v-spacer></v-spacer>
       <template v-if="isSignedIn">
