@@ -1,69 +1,67 @@
-# Uiita-frontend
+# ER 図
 
-## Build Setup
+<img width="694" alt="スクリーンショット 2021-07-10 17 32 27" src="https://user-images.githubusercontent.com/76199103/125157321-582b0580-e1a5-11eb-83a1-67b86b62cd73.png">
 
-```bash
-# install dependencies
-$ yarn install
+# Environment
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+- 言語: ruby 2.7.2
+- フレームワーク: Rails
+- WEB サーバー: ?
+- DB: PostgreSQL
+-
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# function
 
-# generate static project
-$ yarn generate
-```
+ここでは Uiita の機能紹介をしています。
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- 記事一覧の表示
+  - 記事投稿
+    - 新規作成
+    - 編集
+    - 削除
+  - いいね
+  - コメント
+  - User 認証
+    - 新規登録
+    - ログイン
+    - ログアウト
+  - 検索機能
+    - キーワード検索
+  - ソート機能
 
-## Special Directories
+I will introduce the feature of Uiita here.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+- list of articles
+  - Article Submission
+    - Create New
+    - Edit
+    - Delete
+  - Like
+  - Comment
+  - User auth
+  - Keyword seach
+  - Sort
 
-### `assets`
+# 記事一覧の表示 (list of articles)
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+![Uploading Animated GIF-downsized_large.gif…]()
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+# 記事の新規作成　(Create New)
 
-### `components`
+![Animated GIF-downsized](https://user-images.githubusercontent.com/76199103/125160676-2a4fbc00-e1b9-11eb-9130-868620cc1728.gif)
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+# 記事の編集
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+![Animated GIF-downsized (1)](https://user-images.githubusercontent.com/76199103/125160830-1eb0c500-e1ba-11eb-9b44-8b31bf191efb.gif)
 
-### `layouts`
+# 記事削除
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+![Animated GIF-downsized (3)](https://user-images.githubusercontent.com/76199103/125160987-ba423580-e1ba-11eb-8c00-6cebada8cba9.gif)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+# 新規登録
 
+![Animated GIF-downsized (4)](https://user-images.githubusercontent.com/76199103/125161427-51a88800-e1bd-11eb-9230-016c8b301c64.gif)
 
-### `pages`
+# ログイン・ログアウト
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+![Animated GIF-downsized (5)](https://user-images.githubusercontent.com/76199103/125161548-e8754480-e1bd-11eb-97fb-fd2b4a848ded.gif)
