@@ -44,7 +44,7 @@ I will introduce the feature of Uiita here.
 
 # 記事一覧の表示 (list of articles)
 
-![Uploading Animated GIF-downsized_large.gif…]()
+![Animated GIF-downsized_large-2](https://user-images.githubusercontent.com/76199103/125560917-d0f77d95-d192-44d1-a624-4287f42a483e.gif)
 
 # 記事の新規作成　(Create New)
 
