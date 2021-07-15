@@ -1,0 +1,44 @@
+[
+  {
+    "name": "sign_in",
+    "path": "/sign_in",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/sign_in.vue",
+    "chunkName": "pages/sign_in",
+    "_name": "_d5192974"
+  },
+  {
+    "name": "sign_up",
+    "path": "/sign_up",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/sign_up.vue",
+    "chunkName": "pages/sign_up",
+    "_name": "_abec7c88"
+  },
+  {
+    "name": "writing_article",
+    "path": "/writing_article",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/writing_article.vue",
+    "chunkName": "pages/writing_article",
+    "_name": "_27b8201c"
+  },
+  {
+    "name": "articles-id",
+    "path": "/articles/:id",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/articles/_id/index.vue",
+    "chunkName": "pages/articles/_id/index",
+    "_name": "_73b78f48"
+  },
+  {
+    "name": "articles-id-edit",
+    "path": "/articles/:id?/edit",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/articles/_id/edit.vue",
+    "chunkName": "pages/articles/_id/edit",
+    "_name": "_187d2120"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/v-zin/git/Uiita-frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_b640251e"
+  }
+]
