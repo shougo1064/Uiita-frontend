@@ -1,5 +1,5 @@
 {
-  "title": "uiita",
+  "title": "Uiita-frontend",
   "meta": [
     {
       "hid": "charset",
@@ -18,12 +18,12 @@
     {
       "hid": "apple-mobile-web-app-title",
       "name": "apple-mobile-web-app-title",
-      "content": "uiita"
+      "content": "Uiita-frontend"
     },
     {
       "hid": "description",
       "name": "description",
-      "content": "Uiita は、「Qiita」風の記事作成アプリです。"
+      "content": "Uiita は、「Qiita」風の記事作成アプリです。 Qiita のような検索機能や LGTM 機能、ソート機能に関しましては、バックエンドの実装のみしか完了していないことをご了承ください。フロントエンドは現在、実装中です。"
     },
     {
       "hid": "og:type",
@@ -35,19 +35,19 @@
       "hid": "og:title",
       "name": "og:title",
       "property": "og:title",
-      "content": "uiita"
+      "content": "Uiita-frontend"
     },
     {
       "hid": "og:site_name",
       "name": "og:site_name",
       "property": "og:site_name",
-      "content": "uiita"
+      "content": "Uiita-frontend"
     },
     {
       "hid": "og:description",
       "name": "og:description",
       "property": "og:description",
-      "content": "Uiita は、「Qiita」風の記事作成アプリです。"
+      "content": "Uiita は、「Qiita」風の記事作成アプリです。 Qiita のような検索機能や LGTM 機能、ソート機能に関しましては、バックエンドの実装のみしか完了していないことをご了承ください。フロントエンドは現在、実装中です。"
     }
   ],
   "link": [
@@ -62,7 +62,7 @@
     },
     {
       "rel": "manifest",
-      "href": "/_nuxt/manifest.9acc1870.json",
+      "href": "/_nuxt/manifest.e37ad127.json",
       "hid": "manifest"
     }
   ],
