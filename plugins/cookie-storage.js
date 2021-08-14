@@ -21,7 +21,6 @@ export default ({ store, req, isDev }) => {
         })
         return cookie
       },
-      removeItem: (key) => Cookies.remove(key),
     },
   })(store)
 }
