@@ -1,7 +1,7 @@
 {
   "name": "uiita",
   "short_name": "uiita",
-  "description": "Uiita は、「Qiita」風の記事作成アプリです。 Qiita のような検索機能や LGTM 機能、ソート機能に関しましては、バックエンドの実装のみしか完了していないことをご了承ください。フロントエンドは現在、実装中です。",
+  "description": "Uiita は、「Qiita」風の記事作成アプリです。",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.e3e9fb.png",
