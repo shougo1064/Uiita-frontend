@@ -37,13 +37,8 @@ export default {
     },
   },
 
-  async created() {
-    try {
-      await this.$store.dispatch('article/fetchArticles')
-    } catch (err) {
-      // 暫定的な Error 表示
-      alert(err.response.statusText)
-    }
+  created() {
+    this.$store.dispatch('article/fetchArticles')
   },
 }
 </script>

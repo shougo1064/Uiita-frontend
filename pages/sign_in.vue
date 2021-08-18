@@ -59,15 +59,18 @@ export default {
         email: this.email,
         password: this.password,
       }
-      try {
-        await this.$store.dispatch(`user/signIn`, params)
-        this.$router.push('/')
-      } catch (err) {
-        // 暫定的な Error 表示
-        alert(err.response.data.errors.full_messages)
-      } finally {
-        this.loading = false
-      }
+      await this.$store
+        .dispatch(`user/signIn`, params)
+        .then(() => {
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          // 暫定的な Error 表示
+          alert(e.response.data.errors.full_messages)
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
   },
 }

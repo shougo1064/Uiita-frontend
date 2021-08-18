@@ -1,5 +1,5 @@
-import * as Cookies from 'js-cookie'
 import createPersistedState from 'vuex-persistedstate'
+import * as Cookies from 'js-cookie'
 import cookie from 'cookie'
 
 const COOKIE_TARGET_STORE = ['user']
@@ -21,6 +21,7 @@ export default ({ store, req, isDev }) => {
         })
         return cookie
       },
+      removeItem: (key) => Cookies.remove(key),
     },
   })(store)
 }

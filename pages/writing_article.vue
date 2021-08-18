@@ -42,26 +42,26 @@ export default {
       loading: false,
     }
   },
-
   methods: {
     async createArticle() {
       this.loading = true
-
       const params = {
         title: this.title,
         body: this.body,
         status: 'published',
       }
-
-      try {
-        await this.$store.dispatch('article/createArticle', params)
-        this.$router.push('/')
-      } catch (err) {
-        // 暫定的な Error 表示
-        alert(err.response.data.errors.full_messages)
-      } finally {
-        this.loading = false
-      }
+      await this.$store
+        .dispatch('article/createArticle', params)
+        .then(() => {
+          this.$router.push('/')
+        })
+        .catch((e) => {
+          // 暫定的な Error 表示
+          alert(e.response.data.errors.full_messages)
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
   },
 }
@@ -75,12 +75,10 @@ export default {
   flex-flow: column;
   width: 100%;
 }
-
 .title_form {
   flex: none;
   background: #fff;
 }
-
 .edit_area {
   height: 100%;
   display: flex;
@@ -88,7 +86,6 @@ export default {
   background: #fff;
   margin-bottom: 10px;
 }
-
 .create_btn_area {
   text-align: right;
 }
